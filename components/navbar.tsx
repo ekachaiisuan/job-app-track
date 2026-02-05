@@ -12,7 +12,7 @@ export default function Navbar() {
           <Briefcase />
           job Tracker
         </Link>
-        <div>
+        <div className='flex gap-2'>
           <Link href="/sign-in">
             <Button className="text-gray-100 hover:text-black">Sign In</Button>
           </Link>
