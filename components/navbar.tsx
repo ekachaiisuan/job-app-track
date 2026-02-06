@@ -1,10 +1,21 @@
+'use client';
+
 import { Briefcase } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from './ui/button';
-import { getSession } from '@/lib/user';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { useSession } from '@/lib/auth-client';
+import SignOutBtn from './sign-out-btn';
 
-export default async function Navbar() {
-  const session = await getSession();
+export default function Navbar() {
+  const { data: session } = useSession();
   return (
     <nav className="border-b border-gray-200 bg-white">
       <div className="container mx-auto flex h-16 items-center px-4 justify-between">
@@ -26,6 +37,26 @@ export default async function Navbar() {
                   Dashboard
                 </Button>
               </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Button variant={'ghost'}>
+                    <Avatar>
+                      <AvatarFallback className="bg-primary text-white">
+                        {session.user.name[0].toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>
+                    <div>
+                      <p>{session.user.name}</p>
+                      <p>{session.user.email}</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <SignOutBtn />
+                </DropdownMenuContent>
+              </DropdownMenu>
             </>
           ) : (
             <>

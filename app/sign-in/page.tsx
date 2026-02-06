@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Spinner } from '@/components/ui/spinner';
+import { signIn } from '@/lib/auth-client';
 
 export default function SignInPage() {
   const [email, setEmail] = useState('');
@@ -30,7 +31,15 @@ export default function SignInPage() {
     setError('');
     setLoading(true);
     try {
-      
+      const result = await signIn.email({
+        email,
+        password,
+      });
+      if (result.error) {
+        setError(result.error.message ?? 'Failed to sign in');
+      } else {
+        router.push('/dashboard');
+      }
     } catch (error) {
       setError('Failed to sign in. Please try again.');
     } finally {
