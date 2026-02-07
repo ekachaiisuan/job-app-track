@@ -10,19 +10,19 @@ export default function ImageTab() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-6xl">
           <div className="flex gap-2 justify-center mb-8">
-            <Button
+            <Button 
               onClick={() => setActiveTab('organize')}
               variant={activeTab === 'organize' ? 'default' : 'outline'}
             >
               Organize Application
             </Button>
-            <Button
+            <Button 
               onClick={() => setActiveTab('gethired')}
               variant={activeTab === 'gethired' ? 'default' : 'outline'}
             >
               Get Hired
             </Button>
-            <Button
+            <Button 
               onClick={() => setActiveTab('manageboards')}
               variant={activeTab === 'manageboards' ? 'default' : 'outline'}
             >

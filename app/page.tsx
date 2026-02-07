@@ -1,9 +1,14 @@
 import ImageTab from '@/components/image-tab';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Briefcase, CheckCircle2, Link, TrendingUp } from 'lucide-react';
+import {
+  ArrowRight,
+  Briefcase,
+  CheckCircle2,
+  Link,
+  TrendingUp,
+} from 'lucide-react';
 
 export default function Home() {
-  
   return (
     <div className="flex min-h-screen flex-col">
       <main className="flex-1">
@@ -16,16 +21,6 @@ export default function Home() {
               Capture,organize and manage job
             </p>
             <div className="flex flex-col items-center gap-4">
-              <Link href="/sign-up" className="w-full">
-                <Button
-                  size="lg"
-                  className="h-12 px-8 text-lg font-medium w-full"
-                >
-                  Get Started
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-
               <p className="text-sm text-muted-foreground">
                 Free forever. No credit card needed
               </p>
@@ -75,7 +70,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
       </main>
     </div>
   );

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
@@ -29,44 +30,39 @@ export default function Navbar() {
         <div className="flex gap-2">
           {session?.user ? (
             <>
-              <Link href="/dashboard">
-                <Button
-                  variant={'ghost'}
-                  className="text-gray-700 hover:text-black"
-                >
-                  Dashboard
-                </Button>
-              </Link>
+              <Button
+                variant="ghost"
+                className="text-gray-700 hover:text-black"
+              >
+                <Link href="/dashboard">Dashboard</Link>
+              </Button>
+
               <DropdownMenu>
                 <DropdownMenuTrigger>
-                  <Button variant={'ghost'}>
-                    <Avatar>
-                      <AvatarFallback className="bg-primary text-white">
-                        {session.user.name[0].toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                  </Button>
+                  <Avatar>
+                    <AvatarFallback className="bg-primary text-white">
+                      {session.user.name[0].toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <DropdownMenuLabel>
-                    <div>
-                      <p>{session.user.name}</p>
-                      <p>{session.user.email}</p>
-                    </div>
-                  </DropdownMenuLabel>
-                  <SignOutBtn />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>{session.user.name}</DropdownMenuItem>
+                    <DropdownMenuItem>{session.user.email}</DropdownMenuItem>
+                    <SignOutBtn />
+                  </DropdownMenuGroup>
                 </DropdownMenuContent>
               </DropdownMenu>
             </>
           ) : (
             <>
               <Link href="/sign-in">
-                <Button className="text-gray-100 hover:text-black">
+                <Button  className="text-gray-100 hover:text-black">
                   Sign In
                 </Button>
               </Link>
               <Link href="/sign-up">
-                <Button className="text-gray-100 hover:text-black">
+                <Button  className="text-gray-100 hover:text-black">
                   Sign Up
                 </Button>
               </Link>
