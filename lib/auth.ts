@@ -1,9 +1,11 @@
 import { betterAuth } from 'better-auth';
 import { mongodbAdapter } from 'better-auth/adapters/mongodb';
-import { MongoClient } from 'mongodb';
+//import { MongoClient } from 'mongodb';
+import clientPromise from '@/lib/mongo-client';
 import { initializeUserBoard } from './models/init-user-board';
 
-const client = new MongoClient(process.env.MONGODB_URI!);
+//const client = new MongoClient(process.env.MONGODB_URI!);
+const client = await clientPromise;
 const db = client.db();
 
 export const auth = betterAuth({
